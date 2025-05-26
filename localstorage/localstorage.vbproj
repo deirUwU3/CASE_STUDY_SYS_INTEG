@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1190257-A9A5-4091-9E4F-AEF34D8A8971}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>localstorage.My.MyApplication</StartupObject>
+    <RootNamespace>localstorage</RootNamespace>
+    <AssemblyName>localstorage</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>localstorage.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>localstorage.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>Off</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.5.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.30.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.30.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.3.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.3.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.8.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.8.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="ZstdSharp, Version=0.8.5.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.5\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addcourse.Designer.vb">
+      <DependentUpon>addcourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addcourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addfacultyuser.Designer.vb">
+      <DependentUpon>addfacultyuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addfacultyuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addsection.Designer.vb">
+      <DependentUpon>addsection.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addsection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addstudentfrm.Designer.vb">
+      <DependentUpon>Addstudentfrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Addstudentfrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addsubject.Designer.vb">
+      <DependentUpon>addsubject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addsubject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addsubstudent.Designer.vb">
+      <DependentUpon>addsubstudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="addsubstudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminmay.Designer.vb">
+      <DependentUpon>adminmay.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminmay.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adminmstudent.Designer.vb">
+      <DependentUpon>Adminmstudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Adminmstudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminfrm.Designer.vb">
+      <DependentUpon>adminfrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminfrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminmcourse.Designer.vb">
+      <DependentUpon>adminmcourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminmcourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminmsubject.Designer.vb">
+      <DependentUpon>adminmsubject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminmsubject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminmuser.Designer.vb">
+      <DependentUpon>adminmuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="adminmuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="changepassstaff.Designer.vb">
+      <DependentUpon>changepassstaff.vb</DependentUpon>
+    </Compile>
+    <Compile Include="changepassstaff.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="staffgradefrm.Designer.vb">
+      <DependentUpon>staffgradefrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="staffgradefrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="staffsrecord.Designer.vb">
+      <DependentUpon>staffsrecord.vb</DependentUpon>
+    </Compile>
+    <Compile Include="staffsrecord.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="termfrm.Designer.vb">
+      <DependentUpon>termfrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="termfrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updcourse.Designer.vb">
+      <DependentUpon>updcourse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updcourse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updfacultyuser.Designer.vb">
+      <DependentUpon>updfacultyuser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updfacultyuser.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updsgrade.Designer.vb">
+      <DependentUpon>updsgrade.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updsgrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updstudent.Designer.vb">
+      <DependentUpon>updstudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updstudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="data.vb" />
+    <Compile Include="LocalLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocalLogin.Designer.vb">
+      <DependentUpon>LocalLogin.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="staff.Designer.vb">
+      <DependentUpon>staff.vb</DependentUpon>
+    </Compile>
+    <Compile Include="staff.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updsubject.Designer.vb">
+      <DependentUpon>updsubject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="updsubject.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="addcourse.resx">
+      <DependentUpon>addcourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addfacultyuser.resx">
+      <DependentUpon>addfacultyuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addsection.resx">
+      <DependentUpon>addsection.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addstudentfrm.resx">
+      <DependentUpon>Addstudentfrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addsubject.resx">
+      <DependentUpon>addsubject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addsubstudent.resx">
+      <DependentUpon>addsubstudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminmay.resx">
+      <DependentUpon>adminmay.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Adminmstudent.resx">
+      <DependentUpon>Adminmstudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminfrm.resx">
+      <DependentUpon>adminfrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminmcourse.resx">
+      <DependentUpon>adminmcourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminmsubject.resx">
+      <DependentUpon>adminmsubject.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminmuser.resx">
+      <DependentUpon>adminmuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="changepassstaff.resx">
+      <DependentUpon>changepassstaff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="staffgradefrm.resx">
+      <DependentUpon>staffgradefrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="staffsrecord.resx">
+      <DependentUpon>staffsrecord.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="termfrm.resx">
+      <DependentUpon>termfrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updcourse.resx">
+      <DependentUpon>updcourse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updfacultyuser.resx">
+      <DependentUpon>updfacultyuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updsgrade.resx">
+      <DependentUpon>updsgrade.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updstudent.resx">
+      <DependentUpon>updstudent.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocalLogin.resx">
+      <DependentUpon>LocalLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="staff.resx">
+      <DependentUpon>staff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updsubject.resx">
+      <DependentUpon>updsubject.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
