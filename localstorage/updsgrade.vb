@@ -4,6 +4,7 @@ Public Class updsgrade
     Public staffid As String
     Public nameget As String
     Public subget As String
+    Public resultit As String
     Private controlprelim As String
     Private controlmidterm As String
     Private controlprefinal As String
@@ -103,13 +104,16 @@ Public Class updsgrade
             MsgBox("Invalid Input", vbCritical)
             Return
         End If
-        If MsgBox("Are you sure you want to update this student?", vbYesNo + vbQuestion, "Confirmation") = vbNo Then
+
+        ConfirmPassword.returnit = "1"
+        ConfirmPassword.staffid = staffid
+        ConfirmPassword.Show()
+        If resultit = "return" Then
             Return
         End If
-        ' ongoing
+    End Sub
 
-
-
+    Public Sub confirmdone()
         Using conn As MySqlConnection = Data.GetConnection()
             Dim transaction As MySqlTransaction = Nothing ' Declare transaction outside of Try block
             Try
@@ -124,10 +128,10 @@ Public Class updsgrade
                 INNER JOIN studenttable ON gradetable.studentid = studenttable.studentid  
                 INNER JOIN subjecttable ON gradetable.subjectcode = subjecttable.subjectcode    
                     SET 
-                           prelim = @prelim, `Prelim grade` = @eprelim, 
-                           midterm = @midterm, `Midterm grade` = @emidterm, 
-                           prefinal = @prefinal, `Prefinal grade` = @eprefinal, 
-                           final = @final, `Final grade` = @efinal
+                           prelim = @prelim, `Prelim grade` = @eprelim, cprelim = 'lock', 
+                           midterm = @midterm, `Midterm grade` = @emidterm, cmidterm = 'lock', 
+                           prefinal = @prefinal, `Prefinal grade` = @eprefinal, cprefinal = 'lock',
+                           final = @final, `Final grade` = @efinal, cfinal = 'lock'  
                     WHERE 
                            studenttable.lastname = @lname 
                            AND subjecttable.subjectname = @profname"
@@ -169,7 +173,6 @@ Public Class updsgrade
             End Try
 
         End Using
-
     End Sub
 
     Private Sub prelim_TextChanged(sender As Object, e As EventArgs) Handles prelim.TextChanged

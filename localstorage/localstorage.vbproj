@@ -223,6 +223,12 @@
     <Compile Include="changepassstaff.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ConfirmPassword.Designer.vb">
+      <DependentUpon>ConfirmPassword.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="staffgradefrm.Designer.vb">
       <DependentUpon>staffgradefrm.vb</DependentUpon>
     </Compile>
@@ -341,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="changepassstaff.resx">
       <DependentUpon>changepassstaff.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfirmPassword.resx">
+      <DependentUpon>ConfirmPassword.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="staffgradefrm.resx">
       <DependentUpon>staffgradefrm.vb</DependentUpon>

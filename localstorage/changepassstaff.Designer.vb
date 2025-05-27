@@ -173,7 +173,7 @@ Partial Class changepassstaff
         Me.Guna2CheckBox1.UncheckedState.BorderThickness = 0
         Me.Guna2CheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
-        'changepasssttaff
+        'changepassstaff
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -188,7 +188,7 @@ Partial Class changepassstaff
         Me.Controls.Add(Me.Guna2TextBox1)
         Me.Controls.Add(Me.returnbtn)
         Me.Controls.Add(Me.courseupd)
-        Me.Name = "changepasssttaff"
+        Me.Name = "changepassstaff"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Staffcpass"
         Me.ResumeLayout(False)
