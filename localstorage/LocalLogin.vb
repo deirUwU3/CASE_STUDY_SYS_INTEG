@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Data.OleDb
+Imports MySql.Data.MySqlClient
 
 Public Class LocalLogin
 
@@ -44,7 +45,7 @@ username and password."
                             Dim aid As String = reader("FacultyID").ToString()
                             Dim attempts As Integer = Convert.ToInt32(reader("Attempt"))
                             Dim status As String = reader("Status").ToString().ToLower()
-
+                            Dim timenow As String = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
                             If attempts = 0 Or status = "deactivated" Then
                                 lblrole.Text = "Your account is disabled."
                                 tusername.Clear()
@@ -55,9 +56,15 @@ username and password."
                             ' Proceed to dashboard
                             If role = "Admin" Then
                                 adminfrm.adminid = aid
+                                adminfrm.timenow = timenow
+                                reader.Close()
+                                LogLoginTime(aid, role, timenow, conn)
                                 adminfrm.Show()
                             ElseIf role = "Professor" Then
                                 staff.staffid = aid
+                                staff.timenow = timenow
+                                reader.Close()
+                                LogLoginTime(aid, role, timenow, conn)
                                 staff.Show()
                             End If
                             Me.Hide()
@@ -96,6 +103,21 @@ username and password."
                 If conn.State = ConnectionState.Open Then conn.Close()
             End Try
         End Using
+    End Sub
+
+    Private Sub LogLoginTime(username As String, role As String, timenow As String, conn As MySqlConnection)
+        Try
+            Dim sql As String = "INSERT INTO facultytrail (Facultyid, Role, LoginTime) VALUES (@username, @role, @login_time)"
+            Using cmd As New MySqlCommand(sql, conn)
+                cmd.Parameters.AddWithValue("@username", username)
+                cmd.Parameters.AddWithValue("@role", role) ' ← ito ang tamang parameter name
+                cmd.Parameters.AddWithValue("@login_time", timenow)
+                cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            lblrole.Text = "Error logging login time: " & ex.Message
+            MessageBox.Show("Error details: " & ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
     Private Sub updateattempts(username As String, attempts As String, conn As MySqlConnection)
         Try

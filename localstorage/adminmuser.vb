@@ -2,6 +2,7 @@
 
 Public Class adminmuser
     Public adminid As String
+    Public timenow As String
     Private Sub adminmanageuser_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dataingrid()
     End Sub
@@ -48,24 +49,28 @@ Public Class adminmuser
 
     Private Sub dashboard_Click(sender As Object, e As EventArgs) Handles dashboard.Click
         adminfrm.adminid = adminid
+        adminfrm.timenow = timenow
         adminfrm.Show()
         Me.Hide()
     End Sub
 
     Private Sub mstudent_Click(sender As Object, e As EventArgs) Handles mstudent.Click
         Adminmstudent.adminid = adminid
+        Adminmstudent.timenow = timenow
         Adminmstudent.Show()
         Me.Hide()
     End Sub
 
     Private Sub mcourse_Click(sender As Object, e As EventArgs) Handles mcourse.Click
         adminmcourse.adminid = adminid
+        adminmcourse.timenow = timenow
         adminmcourse.Show()
         Me.Hide()
     End Sub
 
     Private Sub msubject_Click(sender As Object, e As EventArgs) Handles msubject.Click
         adminmsubject.adminid = adminid
+        adminmsubject.timenow = timenow
         adminmsubject.Show()
         Me.Hide()
     End Sub
@@ -87,7 +92,27 @@ Public Class adminmuser
         addfacultyuser.Show()
         Me.Hide()
     End Sub
-    Private Sub adminmanageuser_closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+
+    Private Sub LogLogoutTime(conn As MySqlConnection)
+        Try
+            Dim sql As String = "UPDATE facultytrail SET logouttime = @logout_time WHERE facultyid = @fid and loginTime = @time "
+            Using cmd As New MySqlCommand(sql, conn)
+                cmd.Parameters.AddWithValue("@fid", adminid)
+                cmd.Parameters.AddWithValue("@time", timenow)
+                cmd.Parameters.AddWithValue("@logout_time", DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss"))
+                cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error details: " & ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub me_close(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Using conn As MySqlConnection = Data.GetConnection()
+            conn.Open()
+            LogLogoutTime(conn)
+            conn.Close()
+        End Using
+
         LocalLogin.Show()
     End Sub
 
@@ -98,6 +123,7 @@ Public Class adminmuser
 
     Private Sub macayear_Click(sender As Object, e As EventArgs) Handles macayear.Click
         adminmay.adminid = adminid
+        adminmay.timenow = timenow
         adminmay.Show()
         Me.Hide()
     End Sub

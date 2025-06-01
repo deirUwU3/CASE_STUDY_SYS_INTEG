@@ -23,6 +23,7 @@ Public Class ConfirmPassword
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             passhold = reader("Password").ToString()
+                            Label2.Text = passhold
                         End If
                     End Using
                 End Using

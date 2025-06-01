@@ -1,5 +1,6 @@
 ﻿Public Class changepassstaff
     Public staffid As String
+    Public timenow As String
     Public key As String
     Private Sub changepasssttaff_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

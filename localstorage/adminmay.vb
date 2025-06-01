@@ -3,41 +3,66 @@ Imports MySql.Data.MySqlClient
 
 Public Class adminmay
     Public adminid As String
+    Public timenow As String
     Private Sub Terms_Click(sender As Object, e As EventArgs) Handles Terms.Click
         termfrm.Show()
         Me.Hide()
     End Sub
 
-    Private Sub adminmay_closed(sender As Object, e As EventArgs) Handles MyBase.Closed
+    Private Sub me_close(sender As Object, e As EventArgs) Handles MyBase.Closed
+        Using conn As MySqlConnection = Data.GetConnection()
+            conn.Open()
+            LogLogoutTime(conn)
+            conn.Close()
+        End Using
+
         LocalLogin.Show()
+    End Sub
+    Private Sub LogLogoutTime(conn As MySqlConnection)
+        Try
+            Dim sql As String = "UPDATE facultytrail SET logouttime = @logout_time WHERE facultyid = @fid and loginTime = @time "
+            Using cmd As New MySqlCommand(sql, conn)
+                cmd.Parameters.AddWithValue("@fid", adminid)
+                cmd.Parameters.AddWithValue("@time", timenow)
+                cmd.Parameters.AddWithValue("@logout_time", DateTime.Now.ToString("yyyy-MM-dd  HH:mm:ss"))
+                cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error details: " & ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub muser_Click(sender As Object, e As EventArgs) Handles muser.Click
         adminmuser.adminid = adminid
+        adminmuser.timenow = timenow
         adminmuser.Show()
         Me.Hide()
     End Sub
 
     Private Sub mcourse_Click(sender As Object, e As EventArgs) Handles mcourse.Click
         adminmcourse.adminid = adminid
+        adminmcourse.timenow = timenow
         adminmcourse.Show()
         Me.Hide()
     End Sub
 
     Private Sub msubject_Click(sender As Object, e As EventArgs) Handles msubject.Click
         adminmsubject.adminid = adminid
+        adminmsubject.timenow = timenow
         adminmsubject.Show()
         Me.Hide()
     End Sub
 
     Private Sub mstudent_Click(sender As Object, e As EventArgs) Handles mstudent.Click
         Adminmstudent.adminid = adminid
+        Adminmstudent.timenow = timenow
         Adminmstudent.Show()
         Me.Hide()
     End Sub
 
     Private Sub Dashboard_Click(sender As Object, e As EventArgs) Handles Dashboard.Click
         adminfrm.adminid = adminid
+        adminfrm.timenow = timenow
         adminfrm.Show()
         Me.Hide()
     End Sub
@@ -108,11 +133,10 @@ Public Class adminmay
 
         Using conn As MySqlConnection = Data.GetConnection()
             If conn.State = ConnectionState.Closed Then conn.Open()
-            Dim query As String = "SELECT `Year level` from studenttable order by  `Year level` asc
+            Dim query As String = "SELECT `Year level` from studenttable order by `Year level` asc
         "
             Using cmd As New MySqlCommand(query, conn)
                 Using reader As MySqlDataReader = cmd.ExecuteReader()
-
                     While reader.Read()
                         Dim sectionValue As String = reader("Year level").ToString()
                         ' Add only if it's not already in the list
