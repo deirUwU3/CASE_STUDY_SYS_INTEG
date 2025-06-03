@@ -170,4 +170,11 @@ Public Class adminmay
             End Using
         End Using
     End Sub
+
+    Private Sub atrail_Click(sender As Object, e As EventArgs) Handles atrail.Click
+        admintrail.adminid = adminid
+        admintrail.timenow = timenow
+        admintrail.Show()
+        Me.Hide()
+    End Sub
 End Class

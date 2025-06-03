@@ -217,6 +217,12 @@
     <Compile Include="adminmuser.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="admintrail.Designer.vb">
+      <DependentUpon>admintrail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="admintrail.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="changepassstaff.Designer.vb">
       <DependentUpon>changepassstaff.vb</DependentUpon>
     </Compile>
@@ -344,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adminmuser.resx">
       <DependentUpon>adminmuser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="admintrail.resx">
+      <DependentUpon>admintrail.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="changepassstaff.resx">
       <DependentUpon>changepassstaff.vb</DependentUpon>

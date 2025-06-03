@@ -51,7 +51,10 @@ Public Class Adminmstudent
     End Sub
 
     Private Sub Guna2Button5_Click(sender As Object, e As EventArgs) Handles atrail.Click
-
+        admintrail.adminid = adminid
+        admintrail.timenow = timenow
+        admintrail.Show()
+        Me.Hide()
     End Sub
 
     Private Sub addstudent1(sender As Object, e As EventArgs) Handles addstudent.Click

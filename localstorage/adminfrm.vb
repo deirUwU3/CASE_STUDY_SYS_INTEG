@@ -20,7 +20,10 @@ Public Class adminfrm
 
 
     Private Sub atrail_Click(sender As Object, e As EventArgs) Handles atrail.Click
-
+        admintrail.adminid = adminid
+        admintrail.timenow = timenow
+        admintrail.Show()
+        Me.Hide()
     End Sub
 
     Private Sub mcourse_Click(sender As Object, e As EventArgs) Handles mcourse.Click
