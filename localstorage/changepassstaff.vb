@@ -21,4 +21,16 @@
             Me.Hide()
         End If
     End Sub
+
+    Private Sub Guna2CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles cb1.CheckedChanged
+        If cb1.Checked Then
+            pass.PasswordChar = ControlChars.NullChar
+            pass2.PasswordChar = ControlChars.NullChar
+            pass3.PasswordChar = ControlChars.NullChar
+        Else
+            pass.PasswordChar = "*"
+            pass2.PasswordChar = "*"
+            pass3.PasswordChar = "*"
+        End If
+    End Sub
 End Class
