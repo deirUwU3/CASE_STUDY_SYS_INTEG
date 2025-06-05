@@ -33,4 +33,8 @@
             pass3.PasswordChar = "*"
         End If
     End Sub
+
+    Private Sub courseupd_Click(sender As Object, e As EventArgs) Handles courseupd.Click
+
+    End Sub
 End Class
