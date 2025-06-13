@@ -16,18 +16,17 @@ Public Class LocalLogin
     End Sub
 
     Private Sub b1_Click(sender As Object, e As EventArgs) Handles b1.Click
-        lblrole.Text = ""
         Dim username As String = tusername.Text
         Dim password As String = tpassword.Text
 
         If String.IsNullOrEmpty(username) OrElse String.IsNullOrEmpty(password) Then
-            lblrole.Text = "Please enter both 
-username and password."
+            MsgBox("Please enter both 
+username and password.", vbCritical)
             Return
         End If
 
         If lblattempts.Text = "0" Then
-            lblrole.Text = "Your Account is Disable, Ask the Admin to Update"
+            MsgBox("Your Account is Disable, Ask the Admin to Update", vbCritical)
             Return
         End If
         Using conn As MySqlConnection = Data.GetConnection()
@@ -121,7 +120,7 @@ username and password."
     End Sub
     Private Sub updateattempts(username As String, attempts As String, conn As MySqlConnection)
         Try
-            Dim sql As String = "UPDATE facultylogin SET attempt = @attempts WHERE facultyid = @username"
+            Dim sql As String = "UPDATE facultylogin SET attempt = @attempts WHERE username = @username"
             Using cmd As New MySqlCommand(sql, conn)
                 cmd.Parameters.AddWithValue("@attempts", attempts)
                 cmd.Parameters.AddWithValue("@username", username)
@@ -170,9 +169,11 @@ username and password."
                     Using dr As MySqlDataReader = cmd.ExecuteReader()
                         If dr.Read() Then
                             ' If a record is found, display the role and attempts
+                            lblrole.Text = dr("role").ToString()
                             lblattempts.Text = dr("attempt").ToString()
                         Else
                             ' If no record is found, display 'No account exists'
+                            lblrole.Text = ""
                             lblattempts.Text = ""
                         End If
                     End Using

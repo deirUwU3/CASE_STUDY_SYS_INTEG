@@ -41,7 +41,7 @@ Partial Class changepassstaff
         Me.courseupd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.courseupd.Font = New System.Drawing.Font("Arial Rounded MT Bold", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.courseupd.ForeColor = System.Drawing.Color.White
-        Me.courseupd.Location = New System.Drawing.Point(72, 301)
+        Me.courseupd.Location = New System.Drawing.Point(74, 301)
         Me.courseupd.Name = "courseupd"
         Me.courseupd.Size = New System.Drawing.Size(183, 50)
         Me.courseupd.TabIndex = 0

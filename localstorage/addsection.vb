@@ -137,6 +137,16 @@ Public Class addsection
                         student1.ExecuteNonQuery()
                     End Using
 
+                    Dim insert As String = "INSERT INTO facultyupd(	Facultyid, Input, courseid, Time)" &
+                                         "VALUES(@ID, @input,@fid, @time)"
+                    Using s As New MySqlCommand(insert, conn, transaction)
+                        s.Parameters.AddWithValue("@ID", adminid)
+                        s.Parameters.AddWithValue("@input", "Add Section")
+                        s.Parameters.AddWithValue("@fid", coursebox.Text)
+                        s.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                        s.ExecuteNonQuery()
+                    End Using
+
                     transaction.Commit()
 
                     MessageBox.Show("Request submitted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information)

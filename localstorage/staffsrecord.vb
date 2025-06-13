@@ -201,6 +201,7 @@ WHERE subjecttable.facultyid = @fid and gradetable.subjectcode =@subcode
     Private Sub b4_Click(sender As Object, e As EventArgs) Handles b4.Click
         changepassstaff.staffid = staffid
         changepassstaff.timenow = timenow
+        changepassstaff.key = 2
         changepassstaff.Show()
         Me.Hide()
     End Sub

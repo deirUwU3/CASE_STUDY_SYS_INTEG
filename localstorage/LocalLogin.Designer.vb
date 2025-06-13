@@ -160,7 +160,7 @@ Partial Class LocalLogin
         '
         Me.lblrole.AutoSize = True
         Me.lblrole.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblrole.ForeColor = System.Drawing.Color.Red
+        Me.lblrole.ForeColor = System.Drawing.Color.Snow
         Me.lblrole.Location = New System.Drawing.Point(41, 369)
         Me.lblrole.Name = "lblrole"
         Me.lblrole.Size = New System.Drawing.Size(45, 50)

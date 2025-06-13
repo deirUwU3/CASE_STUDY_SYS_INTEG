@@ -32,10 +32,12 @@ Public Class addfacultyuser
                         MessageBox.Show("Error! Same Section Exist in the Database")
                         clrall()
                         Return
-                        End If
-                    End Using
-                Catch ex As Exception
-                Finally
+                    End If
+                End Using
+            Catch ex As Exception
+
+
+            Finally
                     ' Close connection if it's still open
                     If conn.State = ConnectionState.Open Then
                         conn.Close()
@@ -72,6 +74,17 @@ Public Class addfacultyuser
                     faculty.Parameters.AddWithValue("@attempt", "3")
                     faculty.Parameters.AddWithValue("@status", "Active")
                     faculty.ExecuteNonQuery()
+                End Using
+
+
+                Dim insert As String = "INSERT INTO facultyupd(	Facultyid, Input, staffid, Time)" &
+                                         "VALUES(@ID, @input,@fid, @time)"
+                Using s As New MySqlCommand(insert, conn, transaction)
+                    s.Parameters.AddWithValue("@ID", adminid)
+                    s.Parameters.AddWithValue("@input", "Add")
+                    s.Parameters.AddWithValue("@fid", facultyID.Text)
+                    s.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                    s.ExecuteNonQuery()
                 End Using
 
                 transaction.Commit()

@@ -23,7 +23,6 @@ Public Class ConfirmPassword
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
                             passhold = reader("Password").ToString()
-                            Label2.Text = passhold
                         End If
                     End Using
                 End Using
@@ -69,5 +68,9 @@ Public Class ConfirmPassword
         Else
             inppass.PasswordChar = "*"
         End If
+    End Sub
+
+    Private Sub inppass_TextChanged(sender As Object, e As EventArgs) Handles inppass.TextChanged
+
     End Sub
 End Class

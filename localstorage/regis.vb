@@ -1,9 +1,17 @@
 ﻿Imports MySql.Data.MySqlClient
 
-Public Class staff
+Public Class regis
     Public staffid As String
     Public timenow As String
-    Private Sub b5_Click(sender As Object, e As EventArgs) Handles b5.Click
+
+
+
+
+
+
+
+
+    Private Sub logout_Click(sender As Object, e As EventArgs) Handles logout.Click
         Me.Close()
     End Sub
 
@@ -16,6 +24,7 @@ Public Class staff
 
         LocalLogin.Show()
     End Sub
+
     Private Sub LogLogoutTime(conn As MySqlConnection)
         Try
             Dim sql As String = "UPDATE facultytrail SET logouttime = @logout_time WHERE facultyid = @fid and loginTime = @time "
@@ -30,26 +39,15 @@ Public Class staff
         End Try
     End Sub
 
-    Private Sub staff_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub b2_Click(sender As Object, e As EventArgs) Handles regrec.Click
 
     End Sub
 
-    Private Sub b2_Click(sender As Object, e As EventArgs) Handles b2.Click
-        staffsrecord.staffid = staffid
-        staffsrecord.timenow = timenow
-        staffsrecord.Show()
-        Me.Hide()
+    Private Sub b4_Click(sender As Object, e As EventArgs) Handles changepass.Click
+
     End Sub
 
-    Private Sub b4_Click(sender As Object, e As EventArgs) Handles b4.Click
-        changepassstaff.staffid = staffid
-        changepassstaff.timenow = timenow
-        changepassstaff.key = 1
-        changepassstaff.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+    Private Sub regis_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

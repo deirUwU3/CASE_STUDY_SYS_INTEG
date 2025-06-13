@@ -195,5 +195,7 @@ Public Class Adminmstudent
         End Try
     End Sub
 
+    Private Sub Searchid_TextChanged_1(sender As Object, e As EventArgs) Handles Searchid.TextChanged
 
+    End Sub
 End Class

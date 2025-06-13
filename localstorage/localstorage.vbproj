@@ -235,6 +235,24 @@
     <Compile Include="ConfirmPassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="printgrade.Designer.vb">
+      <DependentUpon>printgrade.vb</DependentUpon>
+    </Compile>
+    <Compile Include="printgrade.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="regisstudent.Designer.vb">
+      <DependentUpon>regisstudent.vb</DependentUpon>
+    </Compile>
+    <Compile Include="regisstudent.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="regis.Designer.vb">
+      <DependentUpon>regis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="regis.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="staffgradefrm.Designer.vb">
       <DependentUpon>staffgradefrm.vb</DependentUpon>
     </Compile>
@@ -359,6 +377,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmPassword.resx">
       <DependentUpon>ConfirmPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="printgrade.resx">
+      <DependentUpon>printgrade.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="regis.resx">
+      <DependentUpon>regis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="regisstudent.resx">
+      <DependentUpon>regisstudent.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="staffgradefrm.resx">
       <DependentUpon>staffgradefrm.vb</DependentUpon>

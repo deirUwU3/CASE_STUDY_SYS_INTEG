@@ -10,8 +10,6 @@ Public Class addcourse
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles courseadd.Click
 
-
-
         Using conn As MySqlConnection = Data.GetConnection()
             Try
                 conn.Open()
@@ -70,6 +68,17 @@ Public Class addcourse
                     student1.Parameters.AddWithValue("@status", "Active")
                     student1.ExecuteNonQuery()
                 End Using
+
+                Dim insert As String = "INSERT INTO facultyupd(	Facultyid, Input, courseid, Time)" &
+                                         "VALUES(@ID, @input,@course, @time)"
+                Using s As New MySqlCommand(insert, conn, transaction)
+                    s.Parameters.AddWithValue("@ID", adminid)
+                    s.Parameters.AddWithValue("@input", "Add")
+                    s.Parameters.AddWithValue("@course", inputcourse.Text)
+                    s.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"))
+                    s.ExecuteNonQuery()
+                End Using
+
 
                 transaction.Commit()
 

@@ -163,4 +163,16 @@ WHERE subjecttable.facultyid = @id and subjecttable.subjectcode = @scd and stude
         staffsrecord.timenow = timenow
         Me.Hide()
     End Sub
+
+    Private Sub b4_Click(sender As Object, e As EventArgs) Handles b4.Click
+        changepassstaff.staffid = staffid
+        changepassstaff.timenow = timenow
+        changepassstaff.key = 2
+        changepassstaff.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub b3_Click(sender As Object, e As EventArgs) Handles b3.Click
+
+    End Sub
 End Class

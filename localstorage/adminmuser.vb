@@ -88,7 +88,7 @@ Public Class adminmuser
 
     Private Sub addsection1_Click(sender As Object, e As EventArgs) Handles adduser.Click
 
-        addsection.adminid = adminid
+        addfacultyuser.adminid = adminid
         addfacultyuser.Show()
         Me.Hide()
     End Sub

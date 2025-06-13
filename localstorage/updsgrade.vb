@@ -5,6 +5,7 @@ Public Class updsgrade
     Public nameget As String
     Public subget As String
     Public resultit As String
+    Public resultofit As String
     Private controlprelim As String
     Private controlmidterm As String
     Private controlprefinal As String
@@ -13,6 +14,10 @@ Public Class updsgrade
     Private cmidterm As String
     Private cprefinal As String
     Private cfinal As String
+    Private rprelim As String
+    Private rmidterm As String
+    Private rprefinal As String
+    Private rfinal As String
     Private Sub updsgrade_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         refresh()
     End Sub
@@ -50,11 +55,12 @@ Public Class updsgrade
                 End If
 
                 Dim query As String = "SELECT * FROM gradetable     
-   inner join studenttable on gradetable.studentid = studenttable.studentid    
-   WHERE studenttable.lastname = @lname"
+   inner join studenttable on gradetable.studentid = studenttable.studentid  
+   INNER JOIN subjecttable ON gradetable.subjectcode = subjecttable.subjectcode    
+   WHERE studenttable.lastname = @lname  AND subjecttable.subjectname = @profname"
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@lname", nameget)
-
+                    cmd.Parameters.AddWithValue("@profname", subget)
                     ' Execute the query and read the data
                     Using dr As MySqlDataReader = cmd.ExecuteReader()
                         If dr.Read() Then
@@ -128,22 +134,26 @@ Public Class updsgrade
                 INNER JOIN studenttable ON gradetable.studentid = studenttable.studentid  
                 INNER JOIN subjecttable ON gradetable.subjectcode = subjecttable.subjectcode    
                     SET 
-                           prelim = @prelim, `Prelim grade` = @eprelim, cprelim = 'lock', 
-                           midterm = @midterm, `Midterm grade` = @emidterm, cmidterm = 'lock', 
-                           prefinal = @prefinal, `Prefinal grade` = @eprefinal, cprefinal = 'lock',
-                           final = @final, `Final grade` = @efinal, cfinal = 'lock'  
+                           prelim = @prelim, `Prelim grade` = @eprelim, cprelim = 'lock', `prelim result` = @rprelim,  
+                           midterm = @midterm, `Midterm grade` = @emidterm, cmidterm = 'lock',  `midterm result` = @rmidterm, 
+                           prefinal = @prefinal, `Prefinal grade` = @eprefinal, cprefinal = 'lock', `Prefinal result` = @rprefinal,  
+                           final = @final, `Final grade` = @efinal, cfinal = 'lock',   `Final result` = @rfinal  
                     WHERE 
                            studenttable.lastname = @lname 
                            AND subjecttable.subjectname = @profname"
                 Using student1 As New MySqlCommand(studenttable, conn, transaction)
                     student1.Parameters.AddWithValue("@prelim", prelim.Text)
                     student1.Parameters.AddWithValue("@eprelim", equprelim.Text)
+                    student1.Parameters.AddWithValue("@rprelim", rprelim)
                     student1.Parameters.AddWithValue("@midterm", midterm.Text)
                     student1.Parameters.AddWithValue("@emidterm", equmidterm.Text)
+                    student1.Parameters.AddWithValue("@rmidterm", rmidterm)
                     student1.Parameters.AddWithValue("@prefinal", prefinal.Text)
                     student1.Parameters.AddWithValue("@eprefinal", equprefinal.Text)
+                    student1.Parameters.AddWithValue("@rprefinal", rprefinal)
                     student1.Parameters.AddWithValue("@final", final.Text)
                     student1.Parameters.AddWithValue("@efinal", equfinal.Text)
+                    student1.Parameters.AddWithValue("@rfinal", rfinal)
                     student1.Parameters.AddWithValue("@lname", nameget)
                     student1.Parameters.AddWithValue("@profname", subget)
                     student1.ExecuteNonQuery()
@@ -179,6 +189,7 @@ Public Class updsgrade
         Dim x As String = prelim.Text
         Dim y As String
         Dim numericGrade As Integer
+        resultofit = "Pass"
         controlprelim = "ok"
 
         If Integer.TryParse(x, numericGrade) Then
@@ -201,7 +212,7 @@ Public Class updsgrade
                     y = "2.75"
                 Case 75 To 77
                     y = "3.00"
-                Case Is <= 74
+                Case 74 To 60
                     y = "5.00"
                 Case Else
                     y = "Invalid Input"
@@ -211,18 +222,22 @@ Public Class updsgrade
             Select Case x.ToUpper()
                 Case ""
                     y = ""
+                    resultofit = ""
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlprelim = "Invalid"
             End Select
         End If
         equprelim.Text = y
+        rprelim = resultofit
     End Sub
 
     Private Sub midterm_TextChanged(sender As Object, e As EventArgs) Handles midterm.TextChanged
         Dim x As String = midterm.Text
         Dim y As String
         Dim numericGrade As Integer
+        resultofit = "Pass"
         controlmidterm = "ok"
 
         If Integer.TryParse(x, numericGrade) Then
@@ -245,33 +260,39 @@ Public Class updsgrade
                     y = "2.75"
                 Case 75 To 77
                     y = "3.00"
-                Case Is <= 74
+                Case 74 To 60
                     y = "5.00"
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlmidterm = "Invalid"
             End Select
         Else
             Select Case x.ToUpper()
                 Case "DRP"
-                    y = "Dropped"
+                    y = "Officially Dropped"
+                    resultofit = "Fail"
                 Case "UOD"
                     y = "Unofficially Dropped"
+                    resultofit = "Fail"
                 Case ""
                     y = ""
+                    resultofit = ""
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlmidterm = "Invalid"
             End Select
         End If
         equmidterm.Text = y
-
+        rmidterm = resultofit
     End Sub
 
     Private Sub final_TextChanged(sender As Object, e As EventArgs) Handles final.TextChanged
         Dim x As String = final.Text
         Dim y As String
         Dim numericGrade As Integer
+        resultofit = "Pass"
         controlfinal = "ok"
 
         If Integer.TryParse(x, numericGrade) Then
@@ -294,32 +315,40 @@ Public Class updsgrade
                     y = "2.75"
                 Case 75 To 77
                     y = "3.00"
-                Case Is <= 74
+                Case 74 To 60
                     y = "5.00"
+                    resultofit = "Fail"
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlfinal = "Invalid"
             End Select
         Else
             Select Case x.ToUpper()
                 Case "INC"
                     y = "Incomplete"
+                    resultofit = "Fail"
                 Case "NFE"
                     y = "No Final Exam"
+                    resultofit = "Fail"
                 Case ""
                     y = ""
+                    resultofit = ""
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlfinal = "Invalid"
             End Select
         End If
         equfinal.Text = y
+        rfinal = resultofit
     End Sub
 
     Private Sub prefinal_TextChanged(sender As Object, e As EventArgs) Handles prefinal.TextChanged
         Dim x As String = prefinal.Text
         Dim y As String
         Dim numericGrade As Integer
+        resultofit = "Pass"
         controlprefinal = "ok"
 
         If Integer.TryParse(x, numericGrade) Then
@@ -342,25 +371,32 @@ Public Class updsgrade
                     y = "2.75"
                 Case 75 To 77
                     y = "3.00"
-                Case Is <= 74
+                Case 74 To 60
                     y = "5.00"
+                    resultofit = "Fail"
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlprefinal = "Invalid"
             End Select
         Else
             Select Case x.ToUpper()
                 Case "DRP"
                     y = "Dropped"
+                    resultofit = "Fail"
                 Case "UOD"
                     y = "Unofficially Dropped"
+                    resultofit = "Fail"
                 Case ""
                     y = ""
+                    resultofit = ""
                 Case Else
                     y = "Invalid Input"
+                    resultofit = "Fail"
                     controlprefinal = "Invalid"
             End Select
         End If
         equprefinal.Text = y
+        rprefinal = resultofit
     End Sub
 End Class

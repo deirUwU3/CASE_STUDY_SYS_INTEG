@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ConfirmPassword
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,14 +20,13 @@ Partial Class ConfirmPassword
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.inppass = New Guna.UI2.WinForms.Guna2TextBox()
         Me.enterbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.retunbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cb1 = New Guna.UI2.WinForms.Guna2CheckBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'inppass
@@ -109,23 +108,12 @@ Partial Class ConfirmPassword
         Me.cb1.UncheckedState.BorderThickness = 0
         Me.cb1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(125, Byte), Integer), CType(CType(137, Byte), Integer), CType(CType(149, Byte), Integer))
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(142, 131)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 20)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Label2"
-        '
         'ConfirmPassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Blue
         Me.ClientSize = New System.Drawing.Size(467, 238)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cb1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.retunbtn)
@@ -144,5 +132,4 @@ Partial Class ConfirmPassword
     Friend WithEvents retunbtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label1 As Label
     Friend WithEvents cb1 As Guna.UI2.WinForms.Guna2CheckBox
-    Friend WithEvents Label2 As Label
 End Class
