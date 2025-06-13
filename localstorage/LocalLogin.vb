@@ -71,6 +71,12 @@ username and password.", vbCritical)
                                 reader.Close()
                                 LogLoginTime(aid, role, timenow, conn)
                                 regis.Show()
+                            ElseIf role = "Dean" Then
+                                Dean.staffid = aid
+                                Dean.timenow = timenow
+                                reader.Close()
+                                LogLoginTime(aid, role, timenow, conn)
+                                Dean.Show()
                             End If
                             Me.Hide()
                             b2.PerformClick()

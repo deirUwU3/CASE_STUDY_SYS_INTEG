@@ -3,6 +3,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class addsubject
     Public adminid As String
+    Public whatfrm As String
 
 
     Private Sub addsubject_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -10,34 +11,73 @@ Public Class addsubject
         departmentbox()
     End Sub
     Private Sub lnamebox()
-        Using conn As MySqlConnection = Data.GetConnection()
-            clname.Items.Clear()
-            If conn.State = ConnectionState.Closed Then conn.Open()
-            Dim query As String = "SELECT Facultyid FROM facultytable"
-            Using cmd As New MySqlCommand(query, conn)
-                Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    While reader.Read()
-                        clname.Items.Add(reader("Facultyid").ToString())
-                    End While
+        If whatfrm = "1" Then
+            Using conn As MySqlConnection = Data.GetConnection()
+                clname.Items.Clear()
+                If conn.State = ConnectionState.Closed Then conn.Open()
+                Dim query As String = "SELECT Facultyid FROM facultytable"
+                Using cmd As New MySqlCommand(query, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            clname.Items.Add(reader("Facultyid").ToString())
+                        End While
+                    End Using
                 End Using
+                If conn.State = ConnectionState.Open Then conn.Close()
             End Using
-            If conn.State = ConnectionState.Open Then conn.Close()
-        End Using
+        ElseIf whatfrm = "2" Then
+            Using conn As MySqlConnection = Data.GetConnection()
+                clname.Items.Clear()
+                If conn.State = ConnectionState.Closed Then conn.Open()
+                Dim query As String = "SELECT Facultyid FROM facultytable"
+                Using cmd As New MySqlCommand(query, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            clname.Items.Add(reader("Facultyid").ToString())
+                        End While
+                    End Using
+                End Using
+                If conn.State = ConnectionState.Open Then conn.Close()
+            End Using
+        End If
+
     End Sub
     Private Sub departmentbox()
-        Using conn As MySqlConnection = Data.GetConnection()
-            cdepartment.Items.Clear()
-            If conn.State = ConnectionState.Closed Then conn.Open()
-            Dim query As String = "SELECT DepartmentId FROM deparmenttable"
-            Using cmd As New MySqlCommand(query, conn)
-                Using reader As MySqlDataReader = cmd.ExecuteReader()
-                    While reader.Read()
-                        cdepartment.Items.Add(reader("DepartmentId").ToString())
-                    End While
+        cdepartment.Items.Clear()
+        If whatfrm = "1" Then
+            Using conn As MySqlConnection = Data.GetConnection()
+                cdepartment.Items.Clear()
+                If conn.State = ConnectionState.Closed Then conn.Open()
+                Dim query As String = "SELECT DepartmentId FROM deparmenttable"
+                Using cmd As New MySqlCommand(query, conn)
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            cdepartment.Items.Add(reader("DepartmentId").ToString())
+                        End While
+                    End Using
+                End Using
+                If conn.State = ConnectionState.Open Then conn.Close()
+            End Using
+        ElseIf whatfrm = "2" Then
+            Using conn As MySqlConnection = Data.GetConnection()
+                If conn.State = ConnectionState.Closed Then conn.Open()
+
+                Dim query As String = "SELECT DeparmentId FROM facultytable WHERE facultyid = @fid"
+
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@fid", adminid) ' Add parameter before executing the command
+
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        While reader.Read()
+                            cdepartment.Items.Add(reader("DeparmentId").ToString())
+                        End While
+                    End Using
                 End Using
             End Using
-            If conn.State = ConnectionState.Open Then conn.Close()
-        End Using
+
+
+        End If
+
     End Sub
 
     Private Sub cdepartment_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cdepartment.SelectedIndexChanged
@@ -129,8 +169,7 @@ Public Class addsubject
 
     Private Sub subjectadd_Click(sender As Object, e As EventArgs) Handles subjectadd.Click
 
-
-        If inputsubject.Text = "" Or inputUnit.Text = "" Or exfname.Text = "" Or cdepartment.Text = "" Then
+        If inputsubject.Text = "" Or inputUnit.Text = "" Or exfname.Text = "" Or cdepartment.Text = "" Or scode.Text = "" Then
             MessageBox.Show("Error! Missing Input")
             Return
         End If
@@ -161,6 +200,28 @@ Public Class addsubject
             End Try
         End Using
 
+        Using conn As MySqlConnection = Data.GetConnection()
+            Try
+                conn.Open()
+                Dim query As String = "SELECT * FROM subjecttable WHERE Subjectcode = @scode "
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@scode", scode.Text)
+                    Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                    If reader.HasRows Then
+                        MessageBox.Show("Error! Same Subjectid Exist in the Database")
+                        clrall()
+                        Return
+                    End If
+                End Using
+            Catch ex As Exception
+            Finally
+                ' Close connection if it's still open
+                If conn.State = ConnectionState.Open Then
+                    conn.Close()
+                End If
+            End Try
+        End Using
+
 
         Using conn As MySqlConnection = Data.GetConnection()
             Dim transaction As MySqlTransaction = Nothing ' Declare transaction outside of Try block
@@ -171,13 +232,14 @@ Public Class addsubject
                 transaction = conn.BeginTransaction()
 
                 ' Insert into studentTable
-                Dim section1table As String = "INSERT INTO subjecttable(SubjectName, Facultyid, Unit, Department)" &
-                                         "VALUES(@subject, @faculty, @unit, @depart)"
+                Dim section1table As String = "INSERT INTO subjecttable(SubjectName, Facultyid, Unit, Department, Subjectcode ) " &
+                                         "VALUES(@subject, @faculty, @unit, @depart, @scode )"
                 Using student1 As New MySqlCommand(section1table, conn, transaction)
                     student1.Parameters.AddWithValue("@subject", inputsubject.Text)
                     student1.Parameters.AddWithValue("@faculty", clname.Text)
                     student1.Parameters.AddWithValue("@unit", inputUnit.Text)
                     student1.Parameters.AddWithValue("@depart", cdepartment.Text)
+                    student1.Parameters.AddWithValue("@scode", scode.Text)
                     student1.ExecuteNonQuery()
                 End Using
 
@@ -185,9 +247,15 @@ Public Class addsubject
 
                 MessageBox.Show("Request submitted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 clrall()
-                adminmsubject.adminid = adminid
-                adminmsubject.tableofsubject()
-                adminmsubject.Show()
+                If whatfrm = "1" Then
+                    adminmsubject.adminid = adminid
+                    adminmsubject.tableofsubject()
+                    adminmsubject.Show()
+                ElseIf whatfrm = "2" Then
+                    DeanSubject.staffid = adminid
+                    DeanSubject.tableof()
+                    DeanSubject.Show()
+                End If
                 Me.Close()
             Catch ex As Exception
                 ' Rollback the transaction if any error occurs

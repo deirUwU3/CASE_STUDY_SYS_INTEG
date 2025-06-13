@@ -37,6 +37,8 @@ Partial Class addsubject
         Me.cdepartment = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.exfname = New System.Windows.Forms.Label()
         Me.departname = New System.Windows.Forms.Label()
+        Me.scode = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -226,12 +228,44 @@ Partial Class addsubject
         Me.departname.TabIndex = 31
         Me.departname.Text = "Label6"
         '
+        'scode
+        '
+        Me.scode.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.scode.DefaultText = ""
+        Me.scode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.scode.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.scode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.scode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.scode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.scode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.scode.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.scode.Location = New System.Drawing.Point(213, 393)
+        Me.scode.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.scode.Name = "scode"
+        Me.scode.PlaceholderText = ""
+        Me.scode.SelectedText = ""
+        Me.scode.Size = New System.Drawing.Size(150, 41)
+        Me.scode.TabIndex = 32
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label5.Location = New System.Drawing.Point(57, 403)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(115, 20)
+        Me.Label5.TabIndex = 33
+        Me.Label5.Text = "SubjectCode"
+        '
         'addsubject
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(730, 538)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.scode)
         Me.Controls.Add(Me.departname)
         Me.Controls.Add(Me.exfname)
         Me.Controls.Add(Me.cdepartment)
@@ -269,4 +303,6 @@ Partial Class addsubject
     Friend WithEvents cdepartment As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents exfname As Label
     Friend WithEvents departname As Label
+    Friend WithEvents scode As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label5 As Label
 End Class

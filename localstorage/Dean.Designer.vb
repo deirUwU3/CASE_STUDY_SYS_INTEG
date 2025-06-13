@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class regis
+Partial Class Dean
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -20,9 +20,9 @@ Partial Class regis
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(regis))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Dean))
         Me.regrec = New Guna.UI2.WinForms.Guna2Button()
         Me.changepass = New Guna.UI2.WinForms.Guna2Button()
         Me.logout = New Guna.UI2.WinForms.Guna2Button()
@@ -53,7 +53,7 @@ Partial Class regis
         Me.regrec.PressedColor = System.Drawing.Color.RosyBrown
         Me.regrec.Size = New System.Drawing.Size(184, 51)
         Me.regrec.TabIndex = 1
-        Me.regrec.Text = "Student Record"
+        Me.regrec.Text = "Student Subject"
         '
         'changepass
         '
@@ -166,7 +166,7 @@ Partial Class regis
         Me.dashboardbn.TabIndex = 15
         Me.dashboardbn.Text = "Dashboard"
         '
-        'regis
+        'Dean
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -176,9 +176,9 @@ Partial Class regis
         Me.Controls.Add(Me.Guna2Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "regis"
+        Me.Name = "Dean"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Registration"
+        Me.Text = "Staff"
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)

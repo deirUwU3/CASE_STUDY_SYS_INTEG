@@ -72,6 +72,8 @@ Public Class regisstudent
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        regis.staffid = staffid
+        regis.timenow = timenow
         regis.Show()
         Me.Hide()
     End Sub

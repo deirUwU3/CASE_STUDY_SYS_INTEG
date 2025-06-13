@@ -235,6 +235,18 @@
     <Compile Include="ConfirmPassword.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Dean.Designer.vb">
+      <DependentUpon>Dean.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Dean.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeanSubject.Designer.vb">
+      <DependentUpon>DeanSubject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DeanSubject.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="printgrade.Designer.vb">
       <DependentUpon>printgrade.vb</DependentUpon>
     </Compile>
@@ -377,6 +389,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfirmPassword.resx">
       <DependentUpon>ConfirmPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dean.resx">
+      <DependentUpon>Dean.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeanSubject.resx">
+      <DependentUpon>DeanSubject.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="printgrade.resx">
       <DependentUpon>printgrade.vb</DependentUpon>

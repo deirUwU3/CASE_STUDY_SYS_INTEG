@@ -34,6 +34,14 @@ Public Class changepassstaff
             regisstudent.staffid = staffid
             regisstudent.Show()
             Me.Hide()
+        ElseIf key = "6" Then
+            Dean.staffid = staffid
+            Dean.Show()
+            Me.Hide()
+        ElseIf key = "7" Then
+            DeanSubject.staffid = staffid
+            DeanSubject.Show()
+            Me.Hide()
         End If
     End Sub
 

@@ -116,6 +116,7 @@ Public Class adminmsubject
     End Sub
     Private Sub addsubject_Click(sender As Object, e As EventArgs) Handles addsubject1.Click
         addsubject.Show()
+        addsubject.whatfrm = "1"
         addsubject.adminid = adminid
         Me.Hide()
     End Sub
@@ -135,7 +136,7 @@ Public Class adminmsubject
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles addsubstudentbtn.Click
-
+        addsubstudent.whatfrm = "1"
         addsubstudent.adminid = adminid
         addsubstudent.Show()
 

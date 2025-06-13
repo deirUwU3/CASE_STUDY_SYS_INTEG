@@ -3,6 +3,7 @@ Imports System.Windows
 Imports MySql.Data.MySqlClient
 
 Public Class addsubstudent
+    Public whatfrm As String
     Public adminid As String
     Dim dept As String
     Dim subcode As String
@@ -26,14 +27,28 @@ Public Class addsubstudent
 
                 transaction = conn.BeginTransaction()
 
-                Dim query As String = "SELECT studentid FROM studenttable"
-                Using cmd As New MySqlCommand(query, conn, transaction)
-                    Using reader As MySqlDataReader = cmd.ExecuteReader()
-                        While reader.Read()
-                            studcbox.Items.Add(reader("studentid").ToString())
-                        End While
+                If whatfrm = "1" Then
+                    Dim query As String = "SELECT studentid FROM studenttable"
+                    Using cmd As New MySqlCommand(query, conn, transaction)
+                        Using reader As MySqlDataReader = cmd.ExecuteReader()
+                            While reader.Read()
+                                studcbox.Items.Add(reader("studentid").ToString())
+                            End While
+                        End Using
                     End Using
-                End Using
+                ElseIf whatfrm = "2" Then
+                    Dim query As String = "SELECT studentid FROM studenttable inner join coursetable On studentable.course = coursetable.courseid
+                        inner Join facultytable On  coursetable.department =facultytable.deparmentid where facultytable.facultyid =@fid"
+                    Using cmd As New MySqlCommand(query, conn, transaction)
+
+                        Using reader As MySqlDataReader = cmd.ExecuteReader()
+                            While reader.Read()
+                                studcbox.Items.Add(reader("studentid").ToString())
+                            End While
+                        End Using
+                    End Using
+                End If
+
 
             Catch ex As Exception
 
@@ -190,9 +205,15 @@ Public Class addsubstudent
                 MessageBox.Show("Request submitted successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 clrall()
-                adminmsubject.adminid = adminid
-                adminmsubject.tableofsubject()
-                adminmsubject.Show()
+                If whatfrm = "1" Then
+                    adminmsubject.adminid = adminid
+                    adminmsubject.tableofsubject()
+                    adminmsubject.Show()
+                ElseIf whatfrm = "2" Then
+                    DeanSubject.staffid = adminid
+                    DeanSubject.Show()
+                End If
+
                 Me.Close()
 
             Catch ex As Exception

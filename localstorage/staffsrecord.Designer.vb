@@ -43,6 +43,8 @@ Partial Class staffsrecord
         Me.sublist = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.seclist = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.gradebtn = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.gradedata, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -140,7 +142,7 @@ Partial Class staffsrecord
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Times New Roman", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(274, 34)
+        Me.Label1.Location = New System.Drawing.Point(274, 19)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(349, 45)
         Me.Label1.TabIndex = 8
@@ -350,12 +352,36 @@ Partial Class staffsrecord
         Me.gradebtn.TabIndex = 15
         Me.gradebtn.Text = "Grade Entry"
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label2.Location = New System.Drawing.Point(182, 85)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(104, 20)
+        Me.Label2.TabIndex = 16
+        Me.Label2.Text = "SubjectCode"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.Label3.Location = New System.Drawing.Point(339, 85)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(65, 20)
+        Me.Label3.TabIndex = 17
+        Me.Label3.Text = "Section"
+        '
         'staffsrecord
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(787, 493)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.gradebtn)
         Me.Controls.Add(Me.seclist)
         Me.Controls.Add(Me.sublist)
@@ -389,4 +415,6 @@ Partial Class staffsrecord
     Friend WithEvents seclist As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents dashboardbn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents gradebtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class
