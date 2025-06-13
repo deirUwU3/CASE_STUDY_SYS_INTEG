@@ -20,15 +20,16 @@ Public Class addsubstudent
 
 
         Using conn As MySqlConnection = Data.GetConnection()
+            Dim transaction As MySqlTransaction = Nothing
+
             Try
-
                 If conn.State = ConnectionState.Closed Then conn.Open()
-                Dim transaction As MySqlTransaction = Nothing ' Declare transaction outside of Try block
-
                 transaction = conn.BeginTransaction()
 
+                Dim query As String = ""
+
                 If whatfrm = "1" Then
-                    Dim query As String = "SELECT studentid FROM studenttable"
+                    query = "SELECT studentid FROM studenttable"
                     Using cmd As New MySqlCommand(query, conn, transaction)
                         Using reader As MySqlDataReader = cmd.ExecuteReader()
                             While reader.Read()
@@ -36,11 +37,14 @@ Public Class addsubstudent
                             End While
                         End Using
                     End Using
-                ElseIf whatfrm = "2" Then
-                    Dim query As String = "SELECT studentid FROM studenttable inner join coursetable On studentable.course = coursetable.courseid
-                        inner Join facultytable On  coursetable.department =facultytable.deparmentid where facultytable.facultyid =@fid"
-                    Using cmd As New MySqlCommand(query, conn, transaction)
 
+                ElseIf whatfrm = "2" Then
+                    query = "SELECT studentid FROM studenttable " &
+                    "INNER JOIN coursetable ON studenttable.course = coursetable.courseid " &
+                    "INNER JOIN facultytable ON coursetable.department = facultytable.deparmentid " &
+                    "WHERE facultytable.facultyid = @fid"
+                    Using cmd As New MySqlCommand(query, conn, transaction)
+                        cmd.Parameters.AddWithValue("@fid", adminid) ' Replace with your actual faculty ID variable
                         Using reader As MySqlDataReader = cmd.ExecuteReader()
                             While reader.Read()
                                 studcbox.Items.Add(reader("studentid").ToString())
@@ -49,14 +53,13 @@ Public Class addsubstudent
                     End Using
                 End If
 
+                transaction.Commit()
 
             Catch ex As Exception
-
+                If transaction IsNot Nothing Then transaction.Rollback()
+                MessageBox.Show("Error: " & ex.Message)
             Finally
-                ' Close connection if it's still open
-                If conn.State = ConnectionState.Open Then
-                    conn.Close()
-                End If
+                If conn.State = ConnectionState.Open Then conn.Close()
             End Try
         End Using
     End Sub
@@ -126,9 +129,16 @@ Public Class addsubstudent
     End Sub
 
     Private Sub returnbtn_Click(sender As Object, e As EventArgs) Handles returnbtn.Click
-        adminmsubject.adminid = adminid
-        adminmsubject.Show()
-        Me.Close()
+        If whatfrm = "1" Then
+            adminmsubject.adminid = adminid
+            adminmsubject.Show()
+            Me.Close()
+        ElseIf whatfrm = "2" Then
+            DeanSubject.staffid = adminid
+            DeanSubject.Show()
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub subbox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles subbox.SelectedIndexChanged
