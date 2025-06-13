@@ -5,6 +5,7 @@ Public Class adminmay
     Public adminid As String
     Public timenow As String
     Private Sub Terms_Click(sender As Object, e As EventArgs) Handles Terms.Click
+        termfrm.adminid = adminid
         termfrm.Show()
         Me.Hide()
     End Sub

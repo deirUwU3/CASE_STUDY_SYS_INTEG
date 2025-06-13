@@ -58,6 +58,7 @@ Public Class Adminmstudent
     End Sub
 
     Private Sub addstudent1(sender As Object, e As EventArgs) Handles addstudent.Click
+        Addstudentfrm.whatfrm = "1"
         Addstudentfrm.adminid = adminid
         Addstudentfrm.Show()
     End Sub

@@ -4,13 +4,6 @@ Public Class regis
     Public staffid As String
     Public timenow As String
 
-
-
-
-
-
-
-
     Private Sub logout_Click(sender As Object, e As EventArgs) Handles logout.Click
         Me.Close()
     End Sub
@@ -39,15 +32,27 @@ Public Class regis
         End Try
     End Sub
 
-    Private Sub b2_Click(sender As Object, e As EventArgs) Handles regrec.Click
 
-    End Sub
 
     Private Sub b4_Click(sender As Object, e As EventArgs) Handles changepass.Click
-
+        changepassstaff.staffid = staffid
+        changepassstaff.key = "4"
+        changepassstaff.Show()
+        Me.Hide()
     End Sub
 
     Private Sub regis_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+    End Sub
+
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+
+    End Sub
+
+    Private Sub regrec_Click(sender As Object, e As EventArgs) Handles regrec.Click
+        regisstudent.staffid = staffid
+        regisstudent.timenow = timenow
+        regisstudent.Show()
+        Me.Hide()
     End Sub
 End Class

@@ -3,14 +3,13 @@
 Public Class termfrm
     Public adminid As String
     Private Sub courseupd_Click(sender As Object, e As EventArgs) Handles courseupd.Click
-        If MsgBox("Are you sure you want to update this term?", vbYesNo + vbQuestion, "Confirmation") = vbNo Then
-            Return
-        End If
 
-        If MsgBox("ARE YOR REALLY SURE YOU WANT TO UPDATE THIS TERM?", vbYesNo + vbQuestion, "Critical") = vbNo Then
-            Return
-        End If
+        ConfirmPassword.staffid = adminid
+        ConfirmPassword.returnit = "2"
+        ConfirmPassword.Show()
 
+    End Sub
+    Public Sub changeallterm()
         If chsterm.Text = "Prelim" Then
             Using conn As MySqlConnection = Data.GetConnection()
                 Dim transaction As MySqlTransaction = Nothing ' Declare transaction outside of Try block
@@ -196,7 +195,6 @@ Public Class termfrm
         adminmay.Show()
         Me.Close()
     End Sub
-
     Private Sub termfrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         chsterm.Items.Clear()
         termin()

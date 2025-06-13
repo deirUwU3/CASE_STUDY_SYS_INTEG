@@ -85,6 +85,7 @@ Partial Class ConfirmPassword
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.Label1.Location = New System.Drawing.Point(147, 46)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(160, 25)
@@ -98,6 +99,7 @@ Partial Class ConfirmPassword
         Me.cb1.CheckedState.BorderRadius = 0
         Me.cb1.CheckedState.BorderThickness = 0
         Me.cb1.CheckedState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cb1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.cb1.Location = New System.Drawing.Point(307, 126)
         Me.cb1.Name = "cb1"
         Me.cb1.Size = New System.Drawing.Size(136, 20)
@@ -112,7 +114,7 @@ Partial Class ConfirmPassword
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Blue
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(467, 238)
         Me.Controls.Add(Me.cb1)
         Me.Controls.Add(Me.Label1)

@@ -37,10 +37,12 @@ Partial Class regisstudent
         Me.Searchid = New Guna.UI2.WinForms.Guna2TextBox()
         Me.addstudent = New Guna.UI2.WinForms.Guna2Button()
         Me.search = New System.Windows.Forms.Label()
-        Me.datagridv = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.datav = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
-        CType(Me.datagridv, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.datav, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'regrec
@@ -140,7 +142,7 @@ Partial Class regisstudent
         Me.Guna2Panel1.Location = New System.Drawing.Point(0, -4)
         Me.Guna2Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Guna2Panel1.Name = "Guna2Panel1"
-        Me.Guna2Panel1.Size = New System.Drawing.Size(200, 499)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(200, 516)
         Me.Guna2Panel1.TabIndex = 9
         '
         'Guna2Button1
@@ -176,6 +178,9 @@ Partial Class regisstudent
         '
         'Searchid
         '
+        Me.Searchid.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Searchid.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.Searchid.DefaultText = ""
         Me.Searchid.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -190,7 +195,7 @@ Partial Class regisstudent
         Me.Searchid.Name = "Searchid"
         Me.Searchid.PlaceholderText = ""
         Me.Searchid.SelectedText = ""
-        Me.Searchid.Size = New System.Drawing.Size(168, 32)
+        Me.Searchid.Size = New System.Drawing.Size(185, 32)
         Me.Searchid.TabIndex = 23
         '
         'addstudent
@@ -202,9 +207,9 @@ Partial Class regisstudent
         Me.addstudent.FillColor = System.Drawing.Color.White
         Me.addstudent.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.addstudent.ForeColor = System.Drawing.Color.Black
-        Me.addstudent.Location = New System.Drawing.Point(658, 84)
+        Me.addstudent.Location = New System.Drawing.Point(648, 103)
         Me.addstudent.Name = "addstudent"
-        Me.addstudent.Size = New System.Drawing.Size(117, 51)
+        Me.addstudent.Size = New System.Drawing.Size(127, 32)
         Me.addstudent.TabIndex = 21
         Me.addstudent.Text = "Add Student"
         '
@@ -219,11 +224,11 @@ Partial Class regisstudent
         Me.search.TabIndex = 20
         Me.search.Text = "Student ID"
         '
-        'datagridv
+        'datav
         '
         DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        Me.datagridv.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.datagridv.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.datav.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        Me.datav.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -233,9 +238,9 @@ Partial Class regisstudent
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridv.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
-        Me.datagridv.ColumnHeadersHeight = 22
-        Me.datagridv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.datav.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.datav.ColumnHeadersHeight = 22
+        Me.datav.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle6.BackColor = System.Drawing.Color.White
         DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -243,49 +248,57 @@ Partial Class regisstudent
         DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridv.DefaultCellStyle = DataGridViewCellStyle6
-        Me.datagridv.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagridv.Location = New System.Drawing.Point(207, 145)
-        Me.datagridv.Name = "datagridv"
-        Me.datagridv.RowHeadersVisible = False
-        Me.datagridv.RowHeadersWidth = 51
-        Me.datagridv.RowTemplate.Height = 24
-        Me.datagridv.Size = New System.Drawing.Size(568, 326)
-        Me.datagridv.TabIndex = 19
-        Me.datagridv.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.datagridv.ThemeStyle.AlternatingRowsStyle.Font = Nothing
-        Me.datagridv.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
-        Me.datagridv.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
-        Me.datagridv.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
-        Me.datagridv.ThemeStyle.BackColor = System.Drawing.Color.White
-        Me.datagridv.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagridv.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagridv.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        Me.datagridv.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datagridv.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
-        Me.datagridv.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Me.datagridv.ThemeStyle.HeaderStyle.Height = 22
-        Me.datagridv.ThemeStyle.ReadOnly = False
-        Me.datagridv.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
-        Me.datagridv.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.datagridv.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.datagridv.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.datagridv.ThemeStyle.RowsStyle.Height = 24
-        Me.datagridv.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.datagridv.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.datav.DefaultCellStyle = DataGridViewCellStyle6
+        Me.datav.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.datav.Location = New System.Drawing.Point(3, 3)
+        Me.datav.Name = "datav"
+        Me.datav.RowHeadersVisible = False
+        Me.datav.RowHeadersWidth = 51
+        Me.datav.RowTemplate.Height = 24
+        Me.datav.Size = New System.Drawing.Size(601, 338)
+        Me.datav.TabIndex = 24
+        Me.datav.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.datav.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Me.datav.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty
+        Me.datav.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty
+        Me.datav.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty
+        Me.datav.ThemeStyle.BackColor = System.Drawing.Color.White
+        Me.datav.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.datav.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.datav.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
+        Me.datav.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datav.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White
+        Me.datav.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Me.datav.ThemeStyle.HeaderStyle.Height = 22
+        Me.datav.ThemeStyle.ReadOnly = False
+        Me.datav.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White
+        Me.datav.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
+        Me.datav.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datav.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        Me.datav.ThemeStyle.RowsStyle.Height = 24
+        Me.datav.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.datav.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        '
+        'Guna2Panel2
+        '
+        Me.Guna2Panel2.Controls.Add(Me.datav)
+        Me.Guna2Panel2.Location = New System.Drawing.Point(208, 142)
+        Me.Guna2Panel2.Name = "Guna2Panel2"
+        Me.Guna2Panel2.Size = New System.Drawing.Size(604, 356)
+        Me.Guna2Panel2.TabIndex = 25
         '
         'regisstudent
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 18.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(787, 493)
+        Me.ClientSize = New System.Drawing.Size(825, 510)
         Me.Controls.Add(Me.Searchid)
         Me.Controls.Add(Me.addstudent)
         Me.Controls.Add(Me.search)
-        Me.Controls.Add(Me.datagridv)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Guna2Panel1)
+        Me.Controls.Add(Me.Guna2Panel2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "regisstudent"
@@ -293,7 +306,8 @@ Partial Class regisstudent
         Me.Text = "Staff"
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel1.ResumeLayout(False)
-        CType(Me.datagridv, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.datav, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -309,6 +323,7 @@ Partial Class regisstudent
     Friend WithEvents Searchid As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents addstudent As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents search As Label
-    Friend WithEvents datagridv As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents datav As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
 End Class
 

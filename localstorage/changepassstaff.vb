@@ -26,6 +26,14 @@ Public Class changepassstaff
             staffsrecord.staffid = staffid
             staffsrecord.Show()
             Me.Hide()
+        ElseIf key = "4" Then
+            regis.staffid = staffid
+            regis.Show()
+            Me.Hide()
+        ElseIf key = "5" Then
+            regisstudent.staffid = staffid
+            regisstudent.Show()
+            Me.Hide()
         End If
     End Sub
 
@@ -65,9 +73,6 @@ Public Class changepassstaff
             Try
                 If conn.State = ConnectionState.Closed Then conn.Open()
 
-
-
-
                 Dim transaction As MySqlTransaction = Nothing ' Declare transaction outside of Try block
                 ' Start a transaction
                 transaction = conn.BeginTransaction()
@@ -80,7 +85,6 @@ Public Class changepassstaff
                     student1.Parameters.AddWithValue("@id", staffid)
                     student1.ExecuteNonQuery()
                 End Using
-
 
                 transaction.Commit()
                 MessageBox.Show("Request Updated successfully!", "", MessageBoxButtons.OK, MessageBoxIcon.Information)
